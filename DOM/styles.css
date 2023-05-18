@@ -1,0 +1,25 @@
+body {
+  background: #121212;
+  color: #fff;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+.character {
+}
+
+.char-img {
+  display: inline-block;
+  height: 250px;
+  width: 250px;
+}
+
+.char-name {
+	/* display: inline; */
+}
+
+.char-species {
+	/* display: inline; */
+}
