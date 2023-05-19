@@ -3,10 +3,22 @@
 body {
   background-color: #283149;
   color: #dbedf3;
-  font-family: "Arvo", cursive;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
 }
 
 /********** CLASSES **********/
+.grid-container {
+  background-color:midnightblue;
+  border-radius: 15%;
+  display: grid;
+  height: 50%;
+  margin: 5% auto;
+  width: 50%;
+}
+
+.grid-item {
+
+}
 
 /********** IDs **********/
