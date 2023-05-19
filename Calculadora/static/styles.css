@@ -3,22 +3,31 @@
 body {
   background-color: #283149;
   color: #dbedf3;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   text-align: center;
 }
 
 /********** CLASSES **********/
-.grid-container {
-  background-color:midnightblue;
-  border-radius: 15%;
+.boton-container {
   display: grid;
+  grid-template-columns: auto auto auto auto;
+  text-align: center;
+}
+
+.calculadora {
+  background-color: midnightblue;
+  border-radius: 15%;
   height: 50%;
   margin: 5% auto;
   width: 50%;
 }
 
-.grid-item {
-
+.calc-boton {
+  background-color: green;
+  height: 3rem;
+  margin: auto;
+  width: 3rem;
 }
 
 /********** IDs **********/
