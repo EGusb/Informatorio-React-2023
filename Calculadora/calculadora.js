@@ -10,29 +10,30 @@ const app = document.getElementById("app");
 
 const titulo = agregarNodo(app, "h1", [], (textContent = "¡Calculame ésta!"));
 const container = agregarNodo(app, "div", ["calculadora"]);
-const display = agregarNodo(container, "div", ["display"], "0");
-const containerBotones = agregarNodo(container, "div", ["boton-container"]);
+const display = agregarNodo(container, "div", ["display"]);
+const resultado = agregarNodo(display, "h3", ["resultado"], textContent = "0");
+const containerBotones = agregarNodo(container, "div", ["btn-container"]);
 
 const botones = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "0",
-  ".",
-  "AC",
-  "=",
+  { texto: "AC", clases: [] },
+  { texto: "/", clases: [] },
+  { texto: "x", clases: [] },
+  { texto: "-", clases: [] },
+  { texto: "7", clases: [] },
+  { texto: "8", clases: [] },
+  { texto: "9", clases: [] },
+  { texto: "+", clases: ["btn-suma"] },
+  { texto: "4", clases: [] },
+  { texto: "5", clases: [] },
+  { texto: "6", clases: [] },
+  { texto: "1", clases: [] },
+  { texto: "2", clases: [] },
+  { texto: "3", clases: [] },
+  { texto: "=", clases: ["btn-igual"] },
+  { texto: "0", clases: ["btn-cero"] },
+  { texto: ".", clases: [] },
 ];
-botones.forEach((num) =>
-  agregarNodo(containerBotones, "button", ["calc-boton"], num)
-);
 
-const operadores = ["+", "-", "x", "/"];
-operadores.forEach((op) =>
-  agregarNodo(containerBotones, "button", ["calc-boton", "operacion"], op)
+botones.forEach(({ texto, clases }) =>
+  agregarNodo(containerBotones, "button", ["btn", ...clases], texto)
 );

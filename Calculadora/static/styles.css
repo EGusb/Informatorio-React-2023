@@ -9,25 +9,55 @@ body {
 }
 
 /********** CLASSES **********/
-.boton-container {
+.btn {
+  background-color: green;
+  font-size: x-large;
+  padding: 5px;
+}
+
+.btn-cero {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.btn-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
   text-align: center;
+  gap: 5px;
+  padding-top: 5px;
+}
+
+.btn-igual {
+  grid-column-start: 4;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 6;
+}
+
+.btn-suma {
+  grid-column-start: 4;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 4;
 }
 
 .calculadora {
   background-color: midnightblue;
-  border-radius: 15%;
-  height: 50%;
+  font-size: x-large;
   margin: 5% auto;
-  width: 50%;
+  padding: 5px 5px 5px;
+  width: 20%;
 }
 
-.calc-boton {
-  background-color: green;
-  height: 3rem;
+.display {
+  padding: 10px;
+  background-color: blueviolet;
+}
+
+.resultado {
   margin: auto;
-  width: 3rem;
 }
-
 /********** IDs **********/
