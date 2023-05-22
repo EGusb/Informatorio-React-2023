@@ -7,37 +7,34 @@ function addNode(fatherNode, tag, classes = [], attrs = {}) {
 }
 
 function appendValue(newValue) {
-  const opers = ["+", "-", "*", "/", ".", "%"]; // Operaciones
-  const currentResult = document.getElementById("result"); // Objeto resultado actual
-  const currentLastChar = currentResult.value.slice(-1); // Último char del resultado actual
+  const opers = ["+", "-", "*", "/", ".", "%"];
+  const typed = document.getElementById("typed");
+  const currentLastChar = typed.value.slice(-1); // Último char del resultado actual
   const currentLastCharIsOper = opers.indexOf(currentLastChar) > -1; // ¿El valor actual del display es una operacion?
   const newValueIsOper = opers.indexOf(newValue) > -1; // ¿El valor nuevo es una operacion?
 
-  if (currentLastCharIsOper && newValueIsOper) {
-    // Ultimo char y nuevo valor son operadores
-    currentResult.value = currentResult.value.slice(0, -1) + newValue; // Se coloca el nuevo operador en lugar del anterior
-  } else if (currentResult.value === "0") {
-    // Si antes hay solo "0", se reemplaza
-    currentResult.value = newValue;
-  } else {
-    currentResult.value += newValue;
-  }
+  if (currentLastCharIsOper && newValueIsOper) typed.value = typed.value.slice(0, -1) + newValue;
+  else if (typed.value === "0") typed.value = newValue;
+  else typed.value += newValue;
 }
 
 function calculate() {
   const result = document.getElementById("result");
-  const n = eval(result.value);
-  result.value = n;
+  const typed = document.getElementById("typed");
+  result.value = eval(typed.value);
 }
 
 function clearDisplay() {
+  document.getElementById("typed").value = "0";
   document.getElementById("result").value = "0";
 }
 
 function changeSign() {
   calculate();
-  const currentResult = document.getElementById("result");
-  currentResult.value = -1 * currentResult.value;
+  const result = document.getElementById("result");
+  const typed = document.getElementById("typed");
+  result.value = -1 * result.value;
+  typed.value = result.value;
 }
 
 function deleteLastChar() {
@@ -71,8 +68,9 @@ function createApp() {
   title.textContent = "My Calculator";
   const calculator = addNode(app, "div", ["calculator"]);
 
-  const displayNode = addNode(calculator, "div", ["display"], { id: "display" });
-  const result = addNode(displayNode, "input", [], { id: "result", type: "text", value: "0", disabled: "" });
+  const display = addNode(calculator, "div", ["display"], { id: "display" });
+  const typed = addNode(display, "input", [], { id: "typed", type: "text", value: "", disabled: "" });
+  const result = addNode(display, "input", [], { id: "result", type: "text", value: "0", disabled: "" });
 
   const btnGrid = addNode(calculator, "div", [], { id: "btn-grid" });
   const buttons = [
@@ -91,9 +89,9 @@ function createApp() {
   });
 
   document.getElementById("item00").classList.add("ac");
-  
+
   //Botón de cambio de tema
-  const modo = addNode(app, "input", [], { type: "button", value: "Tema Oscuro", onclick: "changeTheme()", id: "themeButton" });
+  addNode(app, "input", [], { type: "button", value: "Tema Oscuro", onclick: "changeTheme()", id: "themeButton" });
 
   // Event listener de click
   btnGrid.addEventListener("click", ({ target: { type, value } }) => type === "button" && handleEvent(value));
