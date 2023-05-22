@@ -99,12 +99,12 @@ function createApp() {
   const modo = addNode(app, "input", ["btn"], { type: "button", value: "Tema Oscuro", onclick: "changeTheme()", id: "themeButton" });
 
   // Event listener de click
-  btnGrid.addEventListener("click", (event) => {
-    if (event.target.type === "button") handleEvent(event.target.value);
+  btnGrid.addEventListener("click", ({ target: { type, value } }) => {
+    if (type === "button") handleEvent(value);
   });
 
   // Event listener del teclado
-  document.addEventListener("keydown", (event) => handleEvent(event.key.toLowerCase()));
+  document.addEventListener("keydown", ({ key }) => handleEvent(key.toLowerCase()));
 }
 
 createApp();
