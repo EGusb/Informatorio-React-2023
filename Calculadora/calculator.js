@@ -85,11 +85,15 @@ function createApp() {
 
   buttons.forEach((rowItems, rowIndex) => {
     const rowDiv = addNode(btnGrid, "div", ["row"], { id: `row${rowIndex}` });
-    rowItems.forEach((item) => addNode(rowDiv, "input", ["btn"], { type: "button", value: item }));
+    rowItems.forEach((item, itemIndex) =>
+      addNode(rowDiv, "input", ["btn"], { type: "button", value: item, id: `item${rowIndex}${itemIndex}` })
+    );
   });
 
+  document.getElementById("item00").classList.add("ac");
+  
   //Botón de cambio de tema
-  const modo = addNode(app, "input", ["btn"], { type: "button", value: "Tema Oscuro", onclick: "changeTheme()", id: "themeButton" });
+  const modo = addNode(app, "input", [], { type: "button", value: "Tema Oscuro", onclick: "changeTheme()", id: "themeButton" });
 
   // Event listener de click
   btnGrid.addEventListener("click", ({ target: { type, value } }) => type === "button" && handleEvent(value));
