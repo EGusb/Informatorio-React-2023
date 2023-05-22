@@ -1,36 +1,47 @@
 /********** TAGS **********/
 
 body {
-  background-color: #283149;
-  color: #dbedf3;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  background-color: azure;
+  color: black;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   text-align: center;
 }
 
-/********** CLASSES **********/
-.btn {
-  background-color: green;
-  font-size: x-large;
-  padding: 5px;
+.dark {
+  background-color: #283149;
+  color: #dbedf3;
 }
 
-.btn-cero {
+/* 
+td {
+  width: 25%;
+} */
+
+/********** CLASSES **********/
+/* .btn {
+  background-color: green;
+  font-size: 125%;
+  line-height: 100%;
+  padding: 2px;
+  width: 100%;
+} */
+
+/* .btn-cero {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 5;
   grid-row-end: 6;
-}
-
+} */
+/* 
 .btn-container {
-  display: grid;
   grid-template-columns: auto auto auto auto;
   text-align: center;
   gap: 5px;
   padding-top: 5px;
-}
+  width: 25%;
+} */
 
-.btn-igual {
+/* .btn-igual {
   grid-column-start: 4;
   grid-column-end: 4;
   grid-row-start: 4;
@@ -42,22 +53,25 @@ body {
   grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 4;
-}
+} */
 
-.calculadora {
+.calculator {
   background-color: midnightblue;
   font-size: x-large;
   margin: 5% auto;
   padding: 5px 5px 5px;
-  width: 20%;
 }
 
 .display {
-  padding: 10px;
-  background-color: blueviolet;
+  padding: 5px;
+  text-align: right;
 }
-
+/*
 .resultado {
   margin: auto;
-}
+} */
 /********** IDs **********/
+
+#result {
+  text-align: right;
+}
