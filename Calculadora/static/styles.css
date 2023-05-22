@@ -7,7 +7,7 @@ body {
   text-align: center;
 }
 
-.dark {
+.theme-dark {
   background-color: #283149;
   color: #dbedf3;
 }
@@ -60,17 +60,20 @@ td {
   font-size: x-large;
   margin: 5% auto;
   padding: 5px 5px 5px;
+  width: 25%;
 }
 
 .display {
   padding: 5px;
-  text-align: right;
 }
-/*
-.resultado {
-  margin: auto;
-} */
+
 /********** IDs **********/
+
+#btn-grid {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
 
 #result {
   text-align: right;
