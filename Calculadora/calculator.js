@@ -41,8 +41,8 @@ function changeSign() {
 }
 
 function deleteLastChar() {
-  const result = document.getElementById("result").value;
-  result.length === 1 ? clearDisplay() : (result = result.slice(0, -1));
+  const result = document.getElementById("result");
+  result.value.length === 1 ? clearDisplay() : (result.value = result.value.slice(0, -1));
 }
 
 function changeTheme() {
@@ -56,12 +56,12 @@ function changeTheme() {
 function handleEvent(value) {
   const numsAndOpers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "*", "/", "%"];
 
-  if (numsAndOpers.indexOf(value) > -1) appendValue(value);
-  else if (value === "." || value === ",") appendValue(".");
-  else if (value === "backspace" || value === "←") deleteLastChar();
-  else if (value === "escape" || value === "AC") clearDisplay();
-  else if (value === "enter" || value === "=") calculate();
-  else if (value === "±") changeSign();
+  numsAndOpers.indexOf(value) > -1 && appendValue(value);
+  (value === "." || value === ",") && appendValue(".");
+  (value === "backspace" || value === "←") && deleteLastChar();
+  (value === "escape" || value === "AC") && clearDisplay();
+  (value === "enter" || value === "=") && calculate();
+  value === "±" && changeSign();
 }
 
 function createApp() {
