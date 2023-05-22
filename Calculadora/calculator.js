@@ -25,9 +25,9 @@ function appendValue(newValue) {
 }
 
 function calculate() {
-  const currentResult = document.getElementById("result");
-  const n = eval(currentResult.value);
-  currentResult.value = n;
+  const result = document.getElementById("result");
+  const n = eval(result.value);
+  result.value = n;
 }
 
 function clearDisplay() {
@@ -41,22 +41,15 @@ function changeSign() {
 }
 
 function deleteLastChar() {
-  const currentResult = document.getElementById("result");
-  if (currentResult.value.length === 1) {
-    clearDisplay();
-  } else {
-    currentResult.value = currentResult.value.slice(0, -1);
-  }
+  const result = document.getElementById("result").value;
+  result.length === 1 ? clearDisplay() : (result = result.slice(0, -1));
 }
 
 function changeTheme() {
-  document.body.classList.toggle("theme-dark");
-
-  if (document.body.classList.contains("theme-dark")) {
-    document.getElementById("themeButton").value = "Tema Claro";
-  } else {
-    document.getElementById("themeButton").value = "Tema Oscuro";
-  }
+  const classList = document.body.classList;
+  const themeBtn = document.getElementById("themeButton");
+  classList.toggle("theme-dark");
+  classList.contains("theme-dark") ? (themeBtn.value = "Tema Claro") : (themeBtn.value = "Tema Oscuro");
 }
 
 // Manejar el input
@@ -99,9 +92,7 @@ function createApp() {
   const modo = addNode(app, "input", ["btn"], { type: "button", value: "Tema Oscuro", onclick: "changeTheme()", id: "themeButton" });
 
   // Event listener de click
-  btnGrid.addEventListener("click", ({ target: { type, value } }) => {
-    if (type === "button") handleEvent(value);
-  });
+  btnGrid.addEventListener("click", ({ target: { type, value } }) => type === "button" && handleEvent(value));
 
   // Event listener del teclado
   document.addEventListener("keydown", ({ key }) => handleEvent(key.toLowerCase()));
