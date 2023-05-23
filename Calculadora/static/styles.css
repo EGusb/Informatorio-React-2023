@@ -53,6 +53,10 @@ body {
   color: #dbedf3;
 }
 
+input.theme-dark {
+  background: #3a4655;
+}
+
 /********** IDs **********/
 
 #btn-grid {
@@ -73,6 +77,15 @@ body {
   padding: 1rem 0 0;
   text-align: right;
   width: 90%;
+}
+
+#theme-button {
+  border: none;
+  border-radius: 20px;
+  font-size: x-large;
+  margin: 2rem auto 2rem;
+  padding: 5px 0 8px;
+  width: 4rem;
 }
 
 #typed {

@@ -43,10 +43,16 @@ function deleteLastChar() {
 }
 
 function changeTheme() {
-  const classList = document.body.classList;
-  const themeBtn = document.getElementById("themeButton");
-  classList.toggle("theme-dark");
-  classList.contains("theme-dark") ? (themeBtn.value = "Tema Claro") : (themeBtn.value = "Tema Oscuro");
+  const bodyClassList = document.body.classList;
+  const themeBtn = document.getElementById("theme-button");
+  bodyClassList.toggle("theme-dark");
+  if (bodyClassList.contains("theme-dark")) {
+    themeBtn.value = "☀️";
+    themeBtn.classList.remove("theme-dark");
+  } else {
+    themeBtn.value = "🌛";
+    themeBtn.classList.add("theme-dark");
+  }
 }
 
 // Manejar el input
@@ -98,7 +104,7 @@ function createApp() {
   document.getElementById("item00").classList.add("ac");
 
   //Botón de cambio de tema
-  addNode(app, "input", [], { type: "button", value: "Tema Oscuro", onclick: "changeTheme()", id: "themeButton" });
+  addNode(app, "input", ["theme-dark"], { type: "button", value: "🌛", onclick: "changeTheme()", id: "theme-button" });
 
   // Event listener de click
   btnGrid.addEventListener("click", ({ target: { type, value } }) => type === "button" && handleEvent(value));
