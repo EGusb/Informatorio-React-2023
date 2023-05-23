@@ -3,7 +3,10 @@
 body {
   background-color: azure;
   color: black;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 100;
+  /* font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif; */
   text-align: center;
 }
 
@@ -11,27 +14,32 @@ body {
 
 .btn {
   background: #425062;
-  color: #fff;
   border: none;
   border-color: #3c4857;
   border-width: 1px 1px 0px 0;
   border-style: solid;
-}
-
-.ac {
-  color: #ff7665;
+  color: #fff;
+  font-size: 1.3rem;
+  height: 4rem;
 }
 
 .calculator {
   background: #3a4655;
   box-shadow: 0 8px 50px -7px black;
-  height: 20rem;
   margin: auto;
-  width: 275px;
+  width: 18rem;
 }
 
 .display {
-  height: 25%;
+  padding: 1rem;
+}
+
+.operator {
+  color: #ffbc56;
+}
+
+.ac {
+  color: #ff7665;
 }
 
 .row {
@@ -51,28 +59,28 @@ body {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 20% 20% 20% 20% 20%;
-  height: 75%;
+  height: 70%;
   justify-content: center;
   margin: auto;
   text-align: center;
 }
 
 #result {
+  background-color: #3a4655;
   border: none;
   color: #fff;
   font-size: 2rem;
-  height: 50%;
-  margin: 1rem 0 0;
+  padding: 1rem 0 0;
   text-align: right;
   width: 90%;
 }
 
 #typed {
+  background-color: #3a4655;
   border: none;
-  color: #fff;
-  font-size: 2rem;
-  height: 50%;
-  margin: 1rem 0 0;
+  color: #727b86;
+  font-size: 1.5rem;
+  padding: 1rem 0 0;
   text-align: right;
   width: 90%;
 }

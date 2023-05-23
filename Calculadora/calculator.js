@@ -38,7 +38,7 @@ function changeSign() {
 }
 
 function deleteLastChar() {
-  const result = document.getElementById("result");
+  const result = document.getElementById("typed");
   result.value.length === 1 ? clearDisplay() : (result.value = result.value.slice(0, -1));
 }
 
@@ -51,9 +51,11 @@ function changeTheme() {
 
 // Manejar el input
 function handleEvent(value) {
-  const numsAndOpers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "*", "/", "%"];
+  const nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+  const opers = ["+", "-", "*", "/", "%"];
 
-  numsAndOpers.indexOf(value) > -1 && appendValue(value);
+  nums.indexOf(value) > -1 && appendValue(value);
+  opers.indexOf(value) > -1 && appendValue(` ${value} `);
   (value === "." || value === ",") && appendValue(".");
   (value === "backspace" || value === "←") && deleteLastChar();
   (value === "escape" || value === "AC") && clearDisplay();
@@ -83,11 +85,16 @@ function createApp() {
 
   buttons.forEach((rowItems, rowIndex) => {
     const rowDiv = addNode(btnGrid, "div", ["row"], { id: `row${rowIndex}` });
-    rowItems.forEach((item, itemIndex) =>
-      addNode(rowDiv, "input", ["btn"], { type: "button", value: item, id: `item${rowIndex}${itemIndex}` })
-    );
+    rowItems.forEach((item, itemIndex) => {
+      if (rowIndex === 0 || itemIndex === 3) {
+        addNode(rowDiv, "input", ["btn", "operator"], { type: "button", value: item, id: `item${rowIndex}${itemIndex}` });
+      } else {
+        addNode(rowDiv, "input", ["btn"], { type: "button", value: item, id: `item${rowIndex}${itemIndex}` });
+      }
+    });
   });
 
+  // Estilos específicos a ciertos botones
   document.getElementById("item00").classList.add("ac");
 
   //Botón de cambio de tema
