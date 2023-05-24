@@ -12,6 +12,12 @@ function appendValue(newValue) {
   const currentLastChar = typed.value.slice(-1); // Último char del resultado actual
   const currentLastCharIsOper = opers.indexOf(currentLastChar) > -1; // ¿El valor actual del display es una operacion?
   const newValueIsOper = opers.indexOf(newValue) > -1; // ¿El valor nuevo es una operacion?
+  const hidden = document.getElementById("hidden-input");
+
+  if (hidden.value !== "") {
+    typed.value = hidden.value;
+    hidden.value = "";
+  }
 
   if (currentLastCharIsOper && newValueIsOper) typed.value = typed.value.slice(0, -1) + newValue;
   else if (typed.value === "0") typed.value = newValue;
@@ -21,7 +27,9 @@ function appendValue(newValue) {
 function calculate() {
   const result = document.getElementById("result");
   const typed = document.getElementById("typed");
+  const hidden = document.getElementById("hidden-input");
   result.value = eval(typed.value);
+  hidden.value = result.value;
 }
 
 function clearDisplay() {
@@ -57,11 +65,9 @@ function changeTheme() {
 
 // Manejar el input
 function handleEvent(value) {
-  const nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-  const opers = ["+", "-", "*", "/", "%"];
+  const numsAndOpers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "*", "/", "%"];
 
-  nums.indexOf(value) > -1 && appendValue(value);
-  opers.indexOf(value) > -1 && appendValue(` ${value} `);
+  numsAndOpers.indexOf(value) > -1 && appendValue(value);
   (value === "." || value === ",") && appendValue(".");
   (value === "backspace" || value === "←") && deleteLastChar();
   (value === "escape" || value === "AC") && clearDisplay();
@@ -78,7 +84,7 @@ function createApp() {
 
   const display = addNode(calculator, "div", ["display"], { id: "display" });
   const typed = addNode(display, "input", [], { id: "typed", type: "text", value: "", disabled: "" });
-  const result = addNode(display, "input", [], { id: "result", type: "text", value: "0", disabled: "" });
+  const result = addNode(display, "input", [], { id: "result", type: "number", value: "0", disabled: "", step: "0.001" });
 
   const btnGrid = addNode(calculator, "div", [], { id: "btn-grid" });
   const buttons = [
@@ -102,6 +108,9 @@ function createApp() {
 
   // Estilos específicos a ciertos botones
   document.getElementById("item00").classList.add("ac");
+
+  //Botón donde se guarda el último resultado
+  addNode(app, "input", ["theme-dark"], { type: "hidden", value: "", id: "hidden-input" });
 
   //Botón de cambio de tema
   addNode(app, "input", ["theme-dark"], { type: "button", value: "🌛", onclick: "changeTheme()", id: "theme-button" });
